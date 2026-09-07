@@ -1,0 +1,152 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <title>Random Student</title>
+
+    <style>
+        html, body {
+            width: 100%;
+            height: 100%;
+            margin: 0;
+            font-family: Arial, sans-serif;
+            background: white;
+        }
+
+        body {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+        }
+
+        #classArea {
+            padding: 15px;
+        }
+
+        #classSelect {
+            font-size: 24px;
+            padding: 8px;
+        }
+
+        #nameDisplay {
+            flex: 1;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 70px;
+            font-weight: bold;
+            text-align: center;
+        }
+
+        #randomButton {
+            width: 90%;
+            padding: 20px;
+            margin-bottom: 20px;
+            font-size: 30px;
+            font-weight: bold;
+            cursor: pointer;
+        }
+    </style>
+</head>
+
+<body>
+
+<script>
+
+    // =====================================
+    // EDIT YOUR CLASSES HERE
+    // =====================================
+
+    var classes = {
+
+        "11x/Cy3": [
+            "Oscar",
+            "Keira",
+            "Paris",
+            "Rhu",
+            "Alfie",
+            "Tilly",
+            "Nicole",
+            "Leland",
+            "Josh",
+            "Alfie",
+            "Isla",
+            "Meryem",
+            "Alex",
+            "Zak",
+            "Blake",
+            "Scarlett",
+            "Alice",
+            "Elliot",
+            "Tommy",
+            "Jasmine",
+            "Poppy",
+            "Charlie",
+            "Winnie",
+            "Sully",
+            "Charlotte",
+            "Kayden"
+        ]
+
+    };
+
+    // =====================================
+    // DON'T EDIT BELOW HERE
+    // =====================================
+
+</script>
+
+
+<div id="classArea">
+    <select id="classSelect"></select>
+</div>
+
+<div id="nameDisplay">
+    Choose a student
+</div>
+
+<button id="randomButton" onclick="chooseRandomStudent()">
+    Choose Random Student
+</button>
+
+
+<script>
+
+    var classSelect = document.getElementById("classSelect");
+
+    for (var className in classes) {
+
+        if (classes.hasOwnProperty(className)) {
+
+            var option = document.createElement("option");
+
+            option.value = className;
+            option.text = className;
+
+            classSelect.appendChild(option);
+        }
+    }
+
+    function chooseRandomStudent() {
+
+        var selectedClass = classSelect.value;
+
+        var students = classes[selectedClass];
+
+        var randomIndex =
+            Math.floor(Math.random() * students.length);
+
+        document.getElementById("nameDisplay").innerHTML =
+            students[randomIndex];
+    }
+
+    classSelect.onchange = function() {
+
+        document.getElementById("nameDisplay").innerHTML =
+            "Choose a student";
+    };
+
+</script>
+
+</body>
+</html>
